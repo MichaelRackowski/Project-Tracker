@@ -33,7 +33,7 @@ namespace PrescriptionCapstone.Models
         public DateTime? ScheduledAppointment { get; set; }
 
         [Display(Name = "Log/Notes")]
-        public Dictionary<DateTime, string> Log { get; set; }
+        public Dictionary<DateTime,string> Log { get; set; }
 
         [ForeignKey("ApplicationUser")]
         public string ApplicationId { get; set; }
