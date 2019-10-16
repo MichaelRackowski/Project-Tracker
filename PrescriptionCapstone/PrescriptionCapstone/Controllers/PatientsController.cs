@@ -12,12 +12,17 @@ namespace PrescriptionCapstone.Controllers
 {
     public class PatientsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        ApplicationDbContext context;
+
+        public PatientsController()
+        {
+            context = new ApplicationDbContext();
+        }
 
         // GET: Patients
         public ActionResult Index()
         {
-            var patients = db.Patients.Include(p => p.ApplicationUser);
+            var patients = context.Patients.Include(p => p.Id);
             return View(patients.ToList());
         }
 
@@ -28,7 +33,7 @@ namespace PrescriptionCapstone.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Patient patient = db.Patients.Find(id);
+            Patient patient = context.Patients.Find(id);
             if (patient == null)
             {
                 return HttpNotFound();
@@ -39,7 +44,7 @@ namespace PrescriptionCapstone.Controllers
         // GET: Patients/Create
         public ActionResult Create()
         {
-            ViewBag.ApplicationId = new SelectList(db.ApplicationUsers, "Id", "Email");
+            ViewBag.ApplicationId = new SelectList(context.Patients, "Id", "Email");
             return View();
         }
 
@@ -52,12 +57,12 @@ namespace PrescriptionCapstone.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Patients.Add(patient);
-                db.SaveChanges();
+                context.Patients.Add(patient);
+                context.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ApplicationId = new SelectList(db.ApplicationUsers, "Id", "Email", patient.ApplicationId);
+            ViewBag.ApplicationId = new SelectList(context.Patients, "Id", "Email", patient.Id);
             return View(patient);
         }
 
@@ -68,12 +73,12 @@ namespace PrescriptionCapstone.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Patient patient = db.Patients.Find(id);
+            Patient patient = context.Patients.Find(id);
             if (patient == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ApplicationId = new SelectList(db.ApplicationUsers, "Id", "Email", patient.ApplicationId);
+            ViewBag.ApplicationId = new SelectList(context.Patients, "Id", "Email", patient.Id);
             return View(patient);
         }
 
@@ -86,11 +91,11 @@ namespace PrescriptionCapstone.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(patient).State = EntityState.Modified;
-                db.SaveChanges();
+                context.Entry(patient).State = EntityState.Modified;
+                context.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ApplicationId = new SelectList(db.ApplicationUsers, "Id", "Email", patient.ApplicationId);
+            ViewBag.ApplicationId = new SelectList(context.Patients, "Id", "Email", patient.Id);
             return View(patient);
         }
 
@@ -101,7 +106,7 @@ namespace PrescriptionCapstone.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Patient patient = db.Patients.Find(id);
+            Patient patient = context.Patients.Find(id);
             if (patient == null)
             {
                 return HttpNotFound();
@@ -114,9 +119,9 @@ namespace PrescriptionCapstone.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Patient patient = db.Patients.Find(id);
-            db.Patients.Remove(patient);
-            db.SaveChanges();
+            Patient patient = context.Patients.Find(id);
+            context.Patients.Remove(patient);
+            context.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -124,7 +129,7 @@ namespace PrescriptionCapstone.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                context.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -153,13 +158,13 @@ namespace PrescriptionCapstone.Controllers
 
             return RedirectToAction("Index");
         }
-        public void Log(int Id, string text)
+        public ActionResult patientLog(int Id, string text)
         {
-            var patientLog = db.Patients.Find(Id);
+            Patient patientFromDb = context.Patients.Find(Id);
             DateTime dt = DateTime.Now;
+            patientFromDb.Log.Add(dt, text);
 
-            if (patientLog == db.Patients.Id) ;
-            return View(patientLog, text);
+            return View(patientFromDb.Log);
         }
     }
 }
