@@ -212,6 +212,10 @@
     <Compile Include="Migrations\201910161925500_thisisit.Designer.cs">
       <DependentUpon>201910161925500_thisisit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910161906214_Thisisit.cs" />
+    <Compile Include="Migrations\201910161906214_Thisisit.Designer.cs">
+      <DependentUpon>201910161906214_Thisisit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Doctor.cs" />
@@ -303,6 +307,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201910161925500_thisisit.resx">
       <DependentUpon>201910161925500_thisisit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910161906214_Thisisit.resx">
+      <DependentUpon>201910161906214_Thisisit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
