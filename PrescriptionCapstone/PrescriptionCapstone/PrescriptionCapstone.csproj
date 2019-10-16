@@ -215,6 +215,10 @@
     <Compile Include="Migrations\201910161525224_testthis.Designer.cs">
       <DependentUpon>201910161525224_testthis.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910161542589_addtables.cs" />
+    <Compile Include="Migrations\201910161542589_addtables.Designer.cs">
+      <DependentUpon>201910161542589_addtables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Doctor.cs" />
@@ -304,6 +308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910161525224_testthis.resx">
       <DependentUpon>201910161525224_testthis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910161542589_addtables.resx">
+      <DependentUpon>201910161542589_addtables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
