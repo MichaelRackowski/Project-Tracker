@@ -20,6 +20,10 @@ namespace PrescriptionCapstone.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        DbSet<Medication> Medications { get; set; }
+        DbSet<Doctor> Doctors { get; set; }
+        DbSet<Patient> Patients { get; set; }
+      
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
