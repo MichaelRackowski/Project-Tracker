@@ -207,17 +207,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910152033586_init.cs" />
-    <Compile Include="Migrations\201910152033586_init.Designer.cs">
-      <DependentUpon>201910152033586_init.cs</DependentUpon>
+    <Compile Include="Migrations\201910161807460_init.cs" />
+    <Compile Include="Migrations\201910161807460_init.Designer.cs">
+      <DependentUpon>201910161807460_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910161525224_testthis.cs" />
-    <Compile Include="Migrations\201910161525224_testthis.Designer.cs">
-      <DependentUpon>201910161525224_testthis.cs</DependentUpon>
+    <Compile Include="Migrations\201910161809561_test1.cs" />
+    <Compile Include="Migrations\201910161809561_test1.Designer.cs">
+      <DependentUpon>201910161809561_test1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910161542589_addtables.cs" />
-    <Compile Include="Migrations\201910161542589_addtables.Designer.cs">
-      <DependentUpon>201910161542589_addtables.cs</DependentUpon>
+    <Compile Include="Migrations\201910161811119_test2.cs" />
+    <Compile Include="Migrations\201910161811119_test2.Designer.cs">
+      <DependentUpon>201910161811119_test2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -288,6 +288,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -303,14 +304,14 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910152033586_init.resx">
-      <DependentUpon>201910152033586_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910161807460_init.resx">
+      <DependentUpon>201910161807460_init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910161525224_testthis.resx">
-      <DependentUpon>201910161525224_testthis.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910161809561_test1.resx">
+      <DependentUpon>201910161809561_test1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910161542589_addtables.resx">
-      <DependentUpon>201910161542589_addtables.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910161811119_test2.resx">
+      <DependentUpon>201910161811119_test2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -13,7 +13,7 @@ namespace PrescriptionAPI.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201910151757448_init"; }
+            get { return "201910161735131_init"; }
         }
         
         string IMigrationMetadata.Source

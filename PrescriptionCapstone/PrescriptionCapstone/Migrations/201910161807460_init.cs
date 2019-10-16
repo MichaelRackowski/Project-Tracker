@@ -3,10 +3,52 @@ namespace PrescriptionCapstone.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Hannah : DbMigration
+    public partial class init : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Doctors",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        FirstName = c.String(),
+                        LastName = c.String(),
+                        EmailAddress = c.String(),
+                        Appointment = c.DateTime(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Patients",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        FirstName = c.String(),
+                        LastName = c.String(),
+                        EmailAddress = c.String(),
+                        Diagnosis = c.String(),
+                        ScheduledAppointment = c.DateTime(),
+                        Doctor_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Doctors", t => t.Doctor_Id)
+                .Index(t => t.Doctor_Id);
+            
+            CreateTable(
+                "dbo.Medications",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        MedicationConfirmed = c.Boolean(nullable: false),
+                        ScheduledTimeToTake = c.DateTime(nullable: false),
+                        Patient_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Patients", t => t.Patient_Id)
+                .Index(t => t.Patient_Id);
+            
             CreateTable(
                 "dbo.AspNetRoles",
                 c => new
@@ -83,17 +125,24 @@ namespace PrescriptionCapstone.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Patients", "Doctor_Id", "dbo.Doctors");
+            DropForeignKey("dbo.Medications", "Patient_Id", "dbo.Patients");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Medications", new[] { "Patient_Id" });
+            DropIndex("dbo.Patients", new[] { "Doctor_Id" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Medications");
+            DropTable("dbo.Patients");
+            DropTable("dbo.Doctors");
         }
     }
 }
