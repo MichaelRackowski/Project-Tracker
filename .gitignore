@@ -329,6 +329,5 @@ ASALocalRun/
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
 
-PrescriptionCapstone/PrescriptionCapstone/Web.config
-PrescriptionCapstone/PrescriptionAPI/PrescriptionAPI/Web.config
+
 Web.config
