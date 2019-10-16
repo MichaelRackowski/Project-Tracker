@@ -1,0 +1,28 @@
+﻿@model IEnumerable<PrescriptionCapstone.Models.Patient.Log>
+@{
+    ViewBag.Title = "PatientsLog";
+}
+
+<h2>PatientsLog</h2>
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Log)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (KeyValuePair item in Model)
+{
+<tr>
+    <td>
+        @item.Key
+    </td>
+    <td>
+        @item.Value
+    </td>  
+</tr>
+}
+</table>
