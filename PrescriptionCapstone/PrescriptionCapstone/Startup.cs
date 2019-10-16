@@ -18,7 +18,7 @@ namespace PrescriptionCapstone
         {
             ApplicationDbContext context = new ApplicationDbContext();
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-            var UserManger = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context))
+            var UserManger = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
         }
     }
 }
