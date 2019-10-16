@@ -1,4 +1,4 @@
-namespace PrescriptionCapstone.Migrations
+namespace PrescriptionAPI.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
@@ -7,6 +7,70 @@ namespace PrescriptionCapstone.Migrations
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Medications",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Description = c.String(),
+                        SideEffectID = c.Int(),
+                        TimeOfDayId = c.Int(),
+                        TreatmentId = c.Int(),
+                        SideEffect_Id = c.Int(),
+                        TimeOfDay_Id = c.Int(),
+                        Treatment_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.SideEffects", t => t.SideEffect_Id)
+                .ForeignKey("dbo.SideEffects", t => t.SideEffectID)
+                .ForeignKey("dbo.TimeOfDays", t => t.TimeOfDay_Id)
+                .ForeignKey("dbo.TimeOfDays", t => t.TimeOfDayId)
+                .ForeignKey("dbo.Treatments", t => t.Treatment_Id)
+                .ForeignKey("dbo.Treatments", t => t.TreatmentId)
+                .Index(t => t.SideEffectID)
+                .Index(t => t.TimeOfDayId)
+                .Index(t => t.TreatmentId)
+                .Index(t => t.SideEffect_Id)
+                .Index(t => t.TimeOfDay_Id)
+                .Index(t => t.Treatment_Id);
+            
+            CreateTable(
+                "dbo.SideEffects",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Type = c.String(),
+                        Medication_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Medications", t => t.Medication_Id)
+                .Index(t => t.Medication_Id);
+            
+            CreateTable(
+                "dbo.TimeOfDays",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Time = c.String(),
+                        Medication_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Medications", t => t.Medication_Id)
+                .Index(t => t.Medication_Id);
+            
+            CreateTable(
+                "dbo.Treatments",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        TreatmentType = c.String(),
+                        Medication_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Medications", t => t.Medication_Id)
+                .Index(t => t.Medication_Id);
+            
             CreateTable(
                 "dbo.AspNetRoles",
                 c => new
@@ -83,17 +147,39 @@ namespace PrescriptionCapstone.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Treatments", "Medication_Id", "dbo.Medications");
+            DropForeignKey("dbo.Medications", "TreatmentId", "dbo.Treatments");
+            DropForeignKey("dbo.Medications", "Treatment_Id", "dbo.Treatments");
+            DropForeignKey("dbo.TimeOfDays", "Medication_Id", "dbo.Medications");
+            DropForeignKey("dbo.Medications", "TimeOfDayId", "dbo.TimeOfDays");
+            DropForeignKey("dbo.Medications", "TimeOfDay_Id", "dbo.TimeOfDays");
+            DropForeignKey("dbo.SideEffects", "Medication_Id", "dbo.Medications");
+            DropForeignKey("dbo.Medications", "SideEffectID", "dbo.SideEffects");
+            DropForeignKey("dbo.Medications", "SideEffect_Id", "dbo.SideEffects");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Treatments", new[] { "Medication_Id" });
+            DropIndex("dbo.TimeOfDays", new[] { "Medication_Id" });
+            DropIndex("dbo.SideEffects", new[] { "Medication_Id" });
+            DropIndex("dbo.Medications", new[] { "Treatment_Id" });
+            DropIndex("dbo.Medications", new[] { "TimeOfDay_Id" });
+            DropIndex("dbo.Medications", new[] { "SideEffect_Id" });
+            DropIndex("dbo.Medications", new[] { "TreatmentId" });
+            DropIndex("dbo.Medications", new[] { "TimeOfDayId" });
+            DropIndex("dbo.Medications", new[] { "SideEffectID" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Treatments");
+            DropTable("dbo.TimeOfDays");
+            DropTable("dbo.SideEffects");
+            DropTable("dbo.Medications");
         }
     }
 }

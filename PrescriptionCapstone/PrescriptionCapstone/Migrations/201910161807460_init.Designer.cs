@@ -13,7 +13,7 @@ namespace PrescriptionCapstone.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201910152033586_init"; }
+            get { return "201910161807460_init"; }
         }
         
         string IMigrationMetadata.Source
