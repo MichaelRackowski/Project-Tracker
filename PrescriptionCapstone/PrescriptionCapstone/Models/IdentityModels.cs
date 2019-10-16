@@ -33,5 +33,9 @@ namespace PrescriptionCapstone.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<PrescriptionCapstone.Models.Patient> Patients { get; set; }
+
+        public System.Data.Entity.DbSet<PrescriptionCapstone.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }
