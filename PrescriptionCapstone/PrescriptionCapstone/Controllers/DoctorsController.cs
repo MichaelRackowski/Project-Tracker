@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PrescriptionCapstone.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,13 @@ namespace PrescriptionCapstone.Controllers
 {
     public class DoctorsController : Controller
     {
+        ApplicationDbContext context;
+
+        public DoctorsController()
+        {
+            context = new ApplicationDbContext();
+        }
+
         // GET: Doctors
         public ActionResult Index()
         {

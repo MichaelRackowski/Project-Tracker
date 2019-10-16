@@ -13,6 +13,10 @@ namespace PrescriptionCapstone.Models
     {
         [Key]
         public int Id { get; set; }
+        [ForeignKey("User")]
+        public string UserId { get; set; }
+        public ApplicationUser User {get; set; }
+ 
 
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
@@ -29,8 +33,6 @@ namespace PrescriptionCapstone.Models
         [Display(Name = "List of Patients")]
         public List<Patient> Patients { get; set; }
 
-        [ForeignKey("ApplicationUser")]
-        public string ApplicationId { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
+  
     }
 }
