@@ -7,13 +7,17 @@ namespace PrescriptionAPI.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class init : IMigrationMetadata
+    public sealed partial class MedicationUpdated : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(init));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(MedicationUpdated));
         
         string IMigrationMetadata.Id
         {
+<<<<<<< HEAD:PrescriptionCapstone/PrescriptionAPI/PrescriptionAPI/Migrations/201910161735131_init.Designer.cs
             get { return "201910161735131_init"; }
+=======
+            get { return "201910161724103_MedicationUpdated"; }
+>>>>>>> ae479a252db1cdb5085a35e9da4127356d363042:PrescriptionCapstone/PrescriptionAPI/PrescriptionAPI/Migrations/201910161724103_MedicationUpdated.Designer.cs
         }
         
         string IMigrationMetadata.Source
