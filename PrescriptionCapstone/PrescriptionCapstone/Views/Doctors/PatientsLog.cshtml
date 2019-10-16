@@ -5,10 +5,24 @@
 
 <h2>PatientsLog</h2>
 
-@*@foreach (KeyValuePair item in Model)
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Log)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (KeyValuePair item in Model)
 {
-    <div>
-        @item.Log
-        <hr/>
-    </div>
-}*@
+<tr>
+    <td>
+        @item.Key
+    </td>
+    <td>
+        @item.Value
+    </td>  
+</tr>
+}
+</table>
