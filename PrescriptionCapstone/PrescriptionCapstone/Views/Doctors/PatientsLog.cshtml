@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PrescriptionCapstone.Models.Patient.Log>
+﻿@model IEnumerable<PrescriptionCapstone.Models.Log>
 @{
     ViewBag.Title = "PatientsLog";
 }
@@ -9,19 +9,19 @@
     <tr>
 
         <th>
-            @Html.DisplayNameFor(model => model.Log)
+            @Html.DisplayNameFor(model => model.LogNotes)
         </th>
         <th></th>
     </tr>
 
-    @foreach (KeyValuePair item in Model)
+    @foreach (var item in Model)
 {
 <tr>
     <td>
-        @item.Key
+        @item.Time
     </td>
     <td>
-        @item.Value
+        @item.Text
     </td>  
 </tr>
 }

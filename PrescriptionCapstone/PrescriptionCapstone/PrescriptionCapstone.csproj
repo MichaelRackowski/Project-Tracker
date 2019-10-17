@@ -208,18 +208,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910161925500_thisisit.cs" />
-    <Compile Include="Migrations\201910161925500_thisisit.Designer.cs">
-      <DependentUpon>201910161925500_thisisit.cs</DependentUpon>
+    <Compile Include="Migrations\201910171320494_redoofdatabase.cs" />
+    <Compile Include="Migrations\201910171320494_redoofdatabase.Designer.cs">
+      <DependentUpon>201910171320494_redoofdatabase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910161906214_Thisisit.cs" />
-    <Compile Include="Migrations\201910161906214_Thisisit.Designer.cs">
-      <DependentUpon>201910161906214_Thisisit.cs</DependentUpon>
+    <Compile Include="Migrations\201910171324525_changingdictonarytolist.cs" />
+    <Compile Include="Migrations\201910171324525_changingdictonarytolist.Designer.cs">
+      <DependentUpon>201910171324525_changingdictonarytolist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910171342543_AddedLogModel.cs" />
+    <Compile Include="Migrations\201910171342543_AddedLogModel.Designer.cs">
+      <DependentUpon>201910171342543_AddedLogModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Doctor.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Log.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Medication.cs" />
     <Compile Include="Models\Patient.cs" />
@@ -305,11 +310,14 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910161925500_thisisit.resx">
-      <DependentUpon>201910161925500_thisisit.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910171320494_redoofdatabase.resx">
+      <DependentUpon>201910171320494_redoofdatabase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910161906214_Thisisit.resx">
-      <DependentUpon>201910161906214_Thisisit.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910171324525_changingdictonarytolist.resx">
+      <DependentUpon>201910171324525_changingdictonarytolist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910171342543_AddedLogModel.resx">
+      <DependentUpon>201910171342543_AddedLogModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
