@@ -133,9 +133,9 @@ namespace PrescriptionCapstone.Controllers
         }
         /*public ActionResult SelectAppointment()
         {
-            var confirmedAppt = db.Doctors.
-        }*/   //####### create after doctor's control is done.
-
+            Doctor appointment = new 
+        }   
+*/
         /*public ActionResult SelectMedication()
         {
             //view list from MD 
@@ -144,12 +144,13 @@ namespace PrescriptionCapstone.Controllers
             //notify MD??
         }*/
 
-        public ActionResult confrimMedTaken(int Id, Patient patient)
+        public ActionResult confrimMedTaken(Medication medication)
         {
-            patient = context.Patients.Find(Id);
-
-
-
+            Medication patient = context.Medications.Where(m => m.PatientId == medication.PatientId).FirstOrDefault();
+            medication.MedicationConfirmed = true;
+            context.SaveChanges();
+            return View(medication);
+            //what if patient does not confirm?
         }
         public ActionResult patientLog(int Id, string text)
         {
