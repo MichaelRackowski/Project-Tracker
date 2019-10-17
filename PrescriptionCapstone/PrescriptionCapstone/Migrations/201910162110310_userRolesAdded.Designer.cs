@@ -7,13 +7,13 @@ namespace PrescriptionCapstone.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Thisisit : IMigrationMetadata
+    public sealed partial class userRolesAdded : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Thisisit));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(userRolesAdded));
         
         string IMigrationMetadata.Id
         {
-            get { return "201910161906214_Thisisit"; }
+            get { return "201910162110310_userRolesAdded"; }
         }
         
         string IMigrationMetadata.Source

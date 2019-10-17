@@ -36,7 +36,7 @@ namespace PrescriptionCapstone.Models
         public DateTime? ScheduledAppointment { get; set; }
 
         [Display(Name = "Log/Notes")]
-        public Dictionary<DateTime, string> Log { get; set; }
+        public IDictionary<DateTime, string> Log { get; set; }
 
  
     }
