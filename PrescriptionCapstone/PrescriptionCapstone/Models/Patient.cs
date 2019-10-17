@@ -11,6 +11,9 @@ namespace PrescriptionCapstone.Models
     {
         [Key]
         public int Id { get; set; }
+        [ForeignKey("Doctor")]
+        public int DoctorId { get; set; }
+        public Doctor Doctor { get; set; }
         [ForeignKey("User")]
         public string UserId { get; set; }
         public ApplicationUser User { get; set; }    
@@ -27,16 +30,21 @@ namespace PrescriptionCapstone.Models
         [Display(Name = "Diagnosis")]
         public string Diagnosis { get; set; }
 
-        [Display(Name = "Current Medication")]
-        public List<Medication> CurrentListOfMedication { get; set; }
+        [ForeignKey("Medication")]
+        public int? MedicationId { get; set; }
+        public Medication Medication { get; set; }
+        public ICollection<Medication> Medications { get; set; }
 
         //[DataType(DataType.Date)]
         //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Appointment")]
         public DateTime? ScheduledAppointment { get; set; }
+        [ForeignKey("Log")]
+        public int LogId { get; set; }
+        public Log log { get; set; }    
 
         [Display(Name = "Log/Notes")]
-        public IDictionary<DateTime, string> Log { get; set; }
+        public ICollection<Log> LogNotes { get; set; }
 
  
     }
