@@ -209,9 +209,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910171354358_init5.cs" />
-    <Compile Include="Migrations\201910171354358_init5.Designer.cs">
-      <DependentUpon>201910171354358_init5.cs</DependentUpon>
+    <Compile Include="Migrations\201910171337136_Initpart3.cs" />
+    <Compile Include="Migrations\201910171337136_Initpart3.Designer.cs">
+      <DependentUpon>201910171337136_Initpart3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -234,6 +234,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -282,7 +283,8 @@
     <Content Include="Views\Doctors\Index.cshtml" />
     <Content Include="Views\Doctors\Details.cshtml" />
     <Content Include="Views\Doctors\PatientsLog.cshtml" />
-    <Content Include="Views\Appointments.cshtml" />
+    <Content Include="Views\Doctors\Appointments.cshtml" />
+    <Content Include="Views\Doctors\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -302,8 +304,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910171354358_init5.resx">
-      <DependentUpon>201910171354358_init5.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910171337136_Initpart3.resx">
+      <DependentUpon>201910171337136_Initpart3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

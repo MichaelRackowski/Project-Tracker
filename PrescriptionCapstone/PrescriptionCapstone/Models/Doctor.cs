@@ -30,8 +30,7 @@ namespace PrescriptionCapstone.Models
         [Display(Name = "Daily Appointment")]
         public DateTime? Appointment { get; set; }
 
-        [Display(Name = "List of Patients")]
-        public List<Patient> Patients { get; set; }
+      
 
   
     }
