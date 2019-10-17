@@ -3,7 +3,7 @@ namespace PrescriptionCapstone.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class thisisit : DbMigration
+    public partial class init5 : DbMigration
     {
         public override void Up()
         {

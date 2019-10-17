@@ -145,19 +145,18 @@ namespace PrescriptionCapstone.Controllers
             //store selected option in a variable 
             //notify MD??
         }*/
-        public ActionResult ConfirmTakeMed(string patientConfirmation)
-        {
-            if (patientConfirmation == "ok")
-            {
-                return View("Medication Taken");
-            }
-            if (patientConfirmation != "ok")
-            {
-                return View("Missed Medication");
-            }
 
-            return RedirectToAction("Index");
-        }
+        //public ActionResult confrimMedTaken(int Id, Patient patient)
+        //{
+ 
+        //    patient = context.Patients.Find(Id);
+
+        //    if (patient.Id)
+        //    {
+
+        //    }
+        //    return View(medications);
+        //}
         public ActionResult patientLog(int Id, string text)
         {
             Patient patientFromDb = context.Patients.Find(Id);
