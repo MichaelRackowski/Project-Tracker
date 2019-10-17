@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+﻿using Microsoft.Owin;
+using Owin;
+
+[assembly: OwinStartupAttribute(typeof(PrescriptionCapstone.Startup))]
+namespace PrescriptionCapstone
+{
+    public partial class Startup
+    {
+        public void Configuration(IAppBuilder app)
+        {
+            ConfigureAuth(app);
+        }
+    }
+}
+=======
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
@@ -57,3 +73,4 @@ namespace PrescriptionCapstone
      
     }
 }
+>>>>>>> 1b68758bfe5ffe065d994644d35453c4ad536de8
