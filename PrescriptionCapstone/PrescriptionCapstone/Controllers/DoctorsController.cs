@@ -106,6 +106,12 @@ namespace PrescriptionCapstone.Controllers
                 return View();
             }
         }
+        public ActionResult ViewPatientLog(int id, Patient patient)
+        {
+            patient = context.Patients.Where(p => p.Id == id).SingleOrDefault();
+
+            return RedirectToAction("patientLog", "Patients");
+        }
 
     }
 }
