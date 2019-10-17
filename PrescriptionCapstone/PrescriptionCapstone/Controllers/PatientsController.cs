@@ -44,8 +44,8 @@ namespace PrescriptionCapstone.Controllers
         // GET: Patients/Create
         public ActionResult Create()
         {
-            ViewBag.ApplicationId = new SelectList(context.Patients, "Id", "Email");
-            return View();
+            Patient patient=new Patient();
+            return View(patient);
         }
 
         // POST: Patients/Create
@@ -53,7 +53,7 @@ namespace PrescriptionCapstone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,EmailAddress,Diagnosis,ScheduledAppointment,ApplicationId")] Patient patient)
+        public ActionResult Create(Patient patient)
         {
             if (ModelState.IsValid)
             {
@@ -62,7 +62,7 @@ namespace PrescriptionCapstone.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ApplicationId = new SelectList(context.Patients, "Id", "Email", patient.Id);
+         
             return View(patient);
         }
 
@@ -87,15 +87,13 @@ namespace PrescriptionCapstone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,EmailAddress,Diagnosis,ScheduledAppointment,ApplicationId")] Patient patient)
+        public ActionResult Edit(int id, Patient patient)
         {
-            if (ModelState.IsValid)
-            {
-                context.Entry(patient).State = EntityState.Modified;
-                context.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.ApplicationId = new SelectList(context.Patients, "Id", "Email", patient.Id);
+            Patient patient1 = context.Patients.Find(id);
+            patient1.FirstName = patient.FirstName;
+            patient1.LastName = patient.LastName;
+            patient1.EmailAddress = patient.EmailAddress;
+            patient.Doctor = patient.Doctor;
             return View(patient);
         }
 

@@ -30,8 +30,10 @@ namespace PrescriptionCapstone.Models
         [Display(Name = "Diagnosis")]
         public string Diagnosis { get; set; }
 
-        [Display(Name = "Current Medication")]
-        public List<Medication> CurrentListOfMedication { get; set; }
+        [ForeignKey("Medication")]
+        public int? MedicationId { get; set; }
+        public Medication Medication { get; set; }
+        public ICollection<Medication> Medications { get; set; }
 
         //[DataType(DataType.Date)]
         //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
