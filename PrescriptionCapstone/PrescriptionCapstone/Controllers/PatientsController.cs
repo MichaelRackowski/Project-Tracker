@@ -146,17 +146,13 @@ namespace PrescriptionCapstone.Controllers
             //notify MD??
         }*/
 
-        //public ActionResult confrimMedTaken(int Id, Patient patient)
-        //{
- 
-        //    patient = context.Patients.Find(Id);
+        public ActionResult confrimMedTaken(int Id, Patient patient)
+        {
+            patient = context.Patients.Find(Id);
 
-        //    if (patient.Id)
-        //    {
 
-        //    }
-        //    return View(medications);
-        //}
+
+        }
         public ActionResult patientLog(int Id, string text)
         {
             Patient patientFromDb = context.Patients.Find(Id);

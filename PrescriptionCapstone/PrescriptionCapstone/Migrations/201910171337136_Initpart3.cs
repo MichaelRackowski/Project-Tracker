@@ -3,11 +3,9 @@ namespace PrescriptionCapstone.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-<<<<<<< HEAD:PrescriptionCapstone/PrescriptionCapstone/Migrations/201910171354358_init5.cs
+
     public partial class init5 : DbMigration
-=======
-    public partial class Initpart3 : DbMigration
->>>>>>> 2d56fdfffc08e181b3734980af191beed9c6cdd2:PrescriptionCapstone/PrescriptionCapstone/Migrations/201910171337136_Initpart3.cs
+
     {
         public override void Up()
         {

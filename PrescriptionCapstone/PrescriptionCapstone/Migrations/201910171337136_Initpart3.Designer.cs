@@ -7,7 +7,6 @@ namespace PrescriptionCapstone.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-<<<<<<< HEAD:PrescriptionCapstone/PrescriptionCapstone/Migrations/201910171354358_init5.Designer.cs
     public sealed partial class init5 : IMigrationMetadata
     {
         private readonly ResourceManager Resources = new ResourceManager(typeof(init5));
@@ -15,15 +14,7 @@ namespace PrescriptionCapstone.Migrations
         string IMigrationMetadata.Id
         {
             get { return "201910171354358_init5"; }
-=======
-    public sealed partial class Initpart3 : IMigrationMetadata
-    {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Initpart3));
-        
-        string IMigrationMetadata.Id
-        {
-            get { return "201910171337136_Initpart3"; }
->>>>>>> 2d56fdfffc08e181b3734980af191beed9c6cdd2:PrescriptionCapstone/PrescriptionCapstone/Migrations/201910171337136_Initpart3.Designer.cs
+
         }
         
         string IMigrationMetadata.Source
