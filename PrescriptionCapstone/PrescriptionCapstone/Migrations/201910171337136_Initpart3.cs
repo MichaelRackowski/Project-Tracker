@@ -3,7 +3,7 @@ namespace PrescriptionCapstone.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class thisisit : DbMigration
+    public partial class Initpart3 : DbMigration
     {
         public override void Up()
         {
@@ -21,39 +21,6 @@ namespace PrescriptionCapstone.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId)
                 .Index(t => t.UserId);
-            
-            CreateTable(
-                "dbo.Patients",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        UserId = c.String(maxLength: 128),
-                        FirstName = c.String(),
-                        LastName = c.String(),
-                        EmailAddress = c.String(),
-                        Diagnosis = c.String(),
-                        ScheduledAppointment = c.DateTime(),
-                        Doctor_Id = c.Int(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
-                .ForeignKey("dbo.Doctors", t => t.Doctor_Id)
-                .Index(t => t.UserId)
-                .Index(t => t.Doctor_Id);
-            
-            CreateTable(
-                "dbo.Medications",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        MedicationConfirmed = c.Boolean(nullable: false),
-                        ScheduledTimeToTake = c.DateTime(nullable: false),
-                        Patient_Id = c.Int(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Patients", t => t.Patient_Id)
-                .Index(t => t.Patient_Id);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -114,6 +81,39 @@ namespace PrescriptionCapstone.Migrations
                 .Index(t => t.RoleId);
             
             CreateTable(
+                "dbo.Medications",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        MedicationConfirmed = c.Boolean(nullable: false),
+                        ScheduledTimeToTake = c.DateTime(nullable: false),
+                        Patient_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Patients", t => t.Patient_Id)
+                .Index(t => t.Patient_Id);
+            
+            CreateTable(
+                "dbo.Patients",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        DoctorId = c.Int(nullable: false),
+                        UserId = c.String(maxLength: 128),
+                        FirstName = c.String(),
+                        LastName = c.String(),
+                        EmailAddress = c.String(),
+                        Diagnosis = c.String(),
+                        ScheduledAppointment = c.DateTime(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Doctors", t => t.DoctorId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
+                .Index(t => t.DoctorId)
+                .Index(t => t.UserId);
+            
+            CreateTable(
                 "dbo.AspNetRoles",
                 c => new
                     {
@@ -128,30 +128,30 @@ namespace PrescriptionCapstone.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Doctors", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Patients", "Doctor_Id", "dbo.Doctors");
             DropForeignKey("dbo.Patients", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Patients", "DoctorId", "dbo.Doctors");
+            DropForeignKey("dbo.Medications", "Patient_Id", "dbo.Patients");
+            DropForeignKey("dbo.Doctors", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Medications", "Patient_Id", "dbo.Patients");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Patients", new[] { "UserId" });
+            DropIndex("dbo.Patients", new[] { "DoctorId" });
+            DropIndex("dbo.Medications", new[] { "Patient_Id" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.Medications", new[] { "Patient_Id" });
-            DropIndex("dbo.Patients", new[] { "Doctor_Id" });
-            DropIndex("dbo.Patients", new[] { "UserId" });
             DropIndex("dbo.Doctors", new[] { "UserId" });
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Patients");
+            DropTable("dbo.Medications");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.Medications");
-            DropTable("dbo.Patients");
             DropTable("dbo.Doctors");
         }
     }
