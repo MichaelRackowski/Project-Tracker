@@ -39,9 +39,12 @@ namespace PrescriptionCapstone.Models
         //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Appointment")]
         public DateTime? ScheduledAppointment { get; set; }
+        [ForeignKey("Log")]
+        public int LogId { get; set; }
+        public Log log { get; set; }    
 
         [Display(Name = "Log/Notes")]
-        public Dictionary<DateTime,string> Log { get; set; }
+        public ICollection<Log> LogNotes { get; set; }
 
  
     }

@@ -152,13 +152,13 @@ namespace PrescriptionCapstone.Controllers
             return View(medication);
             //what if patient does not confirm?
         }
-        public ActionResult patientLog(int Id, string text)
+        /*public ActionResult patientLog(int Id, string text)
         {
             Patient patientFromDb = context.Patients.Find(Id);
             DateTime dt = DateTime.Now;
-            patientFromDb.Log.Add(dt, text);
+            //patientFromDb.Log.Add(dt, text);
 
-            return View(patientFromDb.Log);
-        }
+            //return View(patientFromDb.Log);
+        }*/
     }
 }
